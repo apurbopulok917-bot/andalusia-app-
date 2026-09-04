@@ -1,0 +1,252 @@
+/* ——— Andalusia pocket guide ——— */
+
+:root {
+  --paper: #FBF8F2;
+  --card: #FFFFFF;
+  --ink: #27211B;
+  --muted: #6F6558;
+  --line: #E6DECF;
+  --warn: #A83232;
+  --warn-tint: #F8E9E7;
+  --accent: #1D5D8D;
+  --accent-tint: #E3EEF5;
+  --accent-ink: #FFFFFF;
+}
+body[data-city="malaga"]  { --accent: #1D5D8D; --accent-tint: #E3EEF5; }
+body[data-city="cordoba"] { --accent: #A4402C; --accent-tint: #F6E7E1; }
+body[data-city="granada"] { --accent: #35634A; --accent-tint: #E4EEE6; }
+body[data-city="travel"]  { --accent: #8A6B2F; --accent-tint: #F1EADA; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17130F;
+    --card: #211B15;
+    --ink: #EDE6DA;
+    --muted: #A99C8B;
+    --line: #3A322A;
+    --warn: #E08A7E;
+    --warn-tint: #3A2320;
+  }
+  body[data-city="malaga"]  { --accent: #5D9CC9; --accent-tint: #1E3040; --accent-ink: #10141A; }
+  body[data-city="cordoba"] { --accent: #D97D64; --accent-tint: #402219; --accent-ink: #1A100C; }
+  body[data-city="granada"] { --accent: #7BAF8F; --accent-tint: #1F3327; --accent-ink: #0F1712; }
+  body[data-city="travel"]  { --accent: #C4A55E; --accent-tint: #362B15; --accent-ink: #171204; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.55 "Public Sans", system-ui, sans-serif;
+}
+
+/* ——— Masthead ——— */
+.masthead { text-align: center; padding: 28px 16px 0; }
+.eyebrow {
+  margin: 0;
+  font: 600 0.72rem/1 "Josefin Sans", sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.masthead h1 {
+  margin: 10px 0 2px;
+  font: 700 2.4rem/1 "Josefin Sans", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.masthead .dates {
+  margin: 0 0 18px;
+  font: 500 0.85rem/1 "Spline Sans Mono", monospace;
+  color: var(--muted);
+}
+.voussoir {
+  height: 10px;
+  background: repeating-linear-gradient(
+    105deg,
+    var(--accent) 0 16px,
+    var(--paper) 16px 32px
+  );
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ——— City tabs (horseshoe arches) ——— */
+.city-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 10px 10px 0;
+  background: var(--paper);
+  border-bottom: 2px solid var(--accent);
+}
+.city-tab {
+  flex: 1;
+  min-height: 46px;
+  padding: 12px 4px 10px;
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: var(--card);
+  color: var(--muted);
+  font: 600 0.82rem/1.1 "Josefin Sans", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.city-tab.active {
+  min-height: 58px;
+  border-radius: 999px 999px 0 0;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink, #fff);
+}
+
+/* ——— Section chips ——— */
+.section-chips {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.section-chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  font: 600 0.85rem/1 "Public Sans", sans-serif;
+  cursor: pointer;
+}
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink, #fff);
+}
+
+/* ——— Main / cards ——— */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 10px 14px 40px;
+}
+.intro-note {
+  margin: 6px 2px 14px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.card h3 {
+  margin: 0 0 6px;
+  font: 600 1.08rem/1.25 "Josefin Sans", sans-serif;
+}
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.badge {
+  font: 600 0.68rem/1 "Public Sans", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--accent-tint);
+  color: var(--ink);
+}
+.badge.mich { background: var(--accent); color: var(--accent-ink, #fff); }
+.badge.warn { background: var(--warn-tint); color: var(--warn); }
+.badge.today { background: var(--ink); color: var(--paper); }
+.card .why { margin: 0 0 10px; font-size: 0.95rem; }
+.meta {
+  font: 500 0.8rem/1.5 "Spline Sans Mono", monospace;
+  color: var(--muted);
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font: 600 0.85rem/1 "Public Sans", sans-serif;
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink, #fff); }
+
+/* ——— Day plans ——— */
+.date-strip { display: flex; gap: 6px; margin: 4px 0 14px; }
+.date-pill {
+  flex: 1;
+  min-height: 54px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  font: 600 0.78rem/1.2 "Spline Sans Mono", monospace;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.date-pill .dow { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; }
+.date-pill.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink, #fff); }
+.date-pill.active .dow { color: inherit; opacity: 0.8; }
+.date-pill.is-today::after { content: "today"; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.slot { margin-bottom: 14px; }
+.slot:last-child { margin-bottom: 0; }
+.slot-label {
+  font: 600 0.72rem/1 "Spline Sans Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 4px;
+}
+.slot p { margin: 0; font-size: 0.95rem; }
+
+/* ——— Travel ——— */
+.leg-option {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+.leg-option:first-of-type { border-top: none; }
+.leg-option.best { border-left: 3px solid var(--accent); padding-left: 12px; }
+.leg-option h4 { margin: 0 0 4px; font: 600 0.98rem/1.3 "Public Sans", sans-serif; }
+.tips li { margin-bottom: 8px; font-size: 0.93rem; }
+
+.footer {
+  text-align: center;
+  padding: 24px 16px 40px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .city-tab, .chip, .date-pill, .btn { transition: background 0.15s, color 0.15s, min-height 0.15s; }
+}
+
+@media (min-width: 900px) {
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cards-grid .card { margin-bottom: 0; }
+}
