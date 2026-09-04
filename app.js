@@ -57,7 +57,7 @@
   function closedBadge(closed) {
     if (!closed) return "";
     var isToday = closed.toLowerCase().indexOf(todayWeekday().toLowerCase()) >= 0;
-    return '<span class="badge' + (isToday ? " warn" : "") + '">Closed: ' + esc(closed) + (isToday ? " — that’s today!" : "") + "</span>";
+    return '<span class="badge closed' + (isToday ? " warn" : "") + '">Closed: ' + esc(closed) + (isToday ? " — that’s today!" : "") + "</span>";
   }
 
   function restaurantCard(r) {

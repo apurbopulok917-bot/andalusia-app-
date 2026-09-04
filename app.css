@@ -87,6 +87,7 @@ body {
 }
 .city-tab {
   flex: 1;
+  min-width: 0;
   min-height: 46px;
   padding: 12px 4px 10px;
   border: 1px solid var(--line);
@@ -166,6 +167,15 @@ main {
   color: var(--ink);
 }
 .badge.mich { background: var(--accent); color: var(--accent-ink, #fff); }
+.badge.closed {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--muted);
+  background: transparent;
+  border: 1px dashed var(--line);
+}
+.badge.closed.warn { color: var(--warn); background: var(--warn-tint); border-style: solid; }
 .badge.warn { background: var(--warn-tint); color: var(--warn); }
 .badge.today { background: var(--ink); color: var(--paper); }
 .card .why { margin: 0 0 10px; font-size: 0.95rem; }
